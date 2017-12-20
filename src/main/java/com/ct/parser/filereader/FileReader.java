@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Properties;
@@ -26,10 +27,10 @@ public class FileReader {
 		
 		Properties rules = loadRules();
 		
-		System.out.println("ISA field value: " + rules.getProperty("ISA"));
-//		ShipmentStatusMessage msg = new ShipmentStatusMessage();
-		readFile(rules, "C:/Users/mohanaj/EDI_project/214OutputA.TXT");
-		readFile(rules, "C:/Users/mohanaj/EDI_project/214OutputB.TXT");
+		Properties appProps = loadAppicationProperties();
+		
+		readFile(rules, appProps.getProperty("fileLocation") + "/214OutputA.TXT");
+		readFile(rules, appProps.getProperty("fileLocation") + "/214OutputB.TXT");
 		
 	}
 
@@ -62,26 +63,27 @@ public class FileReader {
 //	}
 	
 	public static Properties loadRules() {
+		return loadProperties("/rules.properties");
+	}
+	
+	public static Properties loadAppicationProperties() {
+		return loadProperties("/application.properties");
+	}
+	
+	public static Properties loadProperties(String filePath) {
 		FileInputStream fileInput = null;
-		Properties properties = null;
-		try {
-			File file = new File("C:/Users/mohanaj/eclipse_workspace/edi-processing/src/main/resources/rules.properties");
-			fileInput = new FileInputStream(file);
-			properties = new Properties();
-			properties.load(fileInput);
-			System.out.println("Rules Loading Completed");
-		} catch(FileNotFoundException fe) {
-			
-		} catch(IOException fe) {
-			
-		} 
-//		finally {
-//			try {
-//				fileInput.close();
-//			} catch (IOException e) {
-//			
-//			}
-//		}
+		Properties properties = new Properties();
+		
+		  InputStream is = null;
+	        try {
+	         
+	            is = FileReader.class.getResourceAsStream(filePath);
+	            properties.load(is);
+	        } catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 		return properties;
 	}
 
