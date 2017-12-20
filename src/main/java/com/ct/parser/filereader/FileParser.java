@@ -1,5 +1,7 @@
 package com.ct.parser.filereader;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import com.ct.parser.strategy.B10ParsingStrategy;
@@ -7,6 +9,7 @@ import com.ct.parser.strategy.G62ParsingStrategy;
 import com.ct.parser.strategy.GSParsingStrategy;
 import com.ct.parser.strategy.ISAParsingStrategy;
 import com.ct.parser.strategy.L11ParsingStrategy;
+import com.ct.parser.strategy.NParsingStrategy;
 import com.ct.parser.strategy.Parser;
 import com.ct.parser.strategy.STParsingStrategy;
 
@@ -16,6 +19,7 @@ public class FileParser {
 	
 	public static void parseDocument(Properties rules, String line, ShipmentStatusMessage msg) throws Exception{
 
+		String[] nArray = {"N1", "N2", "N3", "N4"};
 		String[] tokens = getTokens(line);
 		String mainToken = tokens[0];
 		Parser parser = null;
@@ -36,6 +40,8 @@ public class FileParser {
 		}
 		else if("G62".equals(mainToken)) {
 			parser = new Parser(new G62ParsingStrategy());
+		} else if(Arrays.asList(nArray).contains(mainToken)) {
+			parser = new Parser(new NParsingStrategy());
 		}
 		
 		if(parser!=null) {

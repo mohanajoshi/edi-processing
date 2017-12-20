@@ -12,6 +12,7 @@ public class ST_TransactionSetHeader extends BaseDao{
 	
 	private B10_BeginningSegment B10_beginningSegment;
 	private List<L11_ReferenceNumber> listL11_referenceNumber = new ArrayList<L11_ReferenceNumber>();
+	private List<N_Information> listN_information = new ArrayList<N_Information>();
 	private G62_DateTime G62_dateTime;
 	
 	public String getST01_transactionSetIdCode() {
@@ -50,6 +51,19 @@ public class ST_TransactionSetHeader extends BaseDao{
 
 	public void addL11_referenceNumber(L11_ReferenceNumber l11_referenceNumber) {
 		this.listL11_referenceNumber.add(l11_referenceNumber);
+	}
+
+
+	public N_Information getN_information_lastElement() {
+		if(listN_information.size() >= 1) {
+			return listN_information.get(listN_information.size()-1);
+		}
+		return null;
+	}
+
+
+	public void addN_information(N_Information n_information) {
+		this.listN_information.add(n_information);
 	}
 
 

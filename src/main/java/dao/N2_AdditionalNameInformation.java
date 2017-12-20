@@ -1,6 +1,6 @@
 package dao;
 
-public class N2_AdditionalNameInformation {
+public class N2_AdditionalNameInformation extends BaseDao implements N_Info{
 	private String N201_name1;
 	private String N202_name2;
 	public String getN201_name1() {

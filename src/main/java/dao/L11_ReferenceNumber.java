@@ -1,6 +1,6 @@
 package dao;
 
-public class L11_ReferenceNumber {
+public class L11_ReferenceNumber extends BaseDao{
 	private String L1101_referenceIdentification;
 	private String L1102_referenceIdentificationQuaifier;
 	public String getL1101_referenceIdentification() {

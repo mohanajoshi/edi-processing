@@ -1,6 +1,6 @@
 package dao;
 
-public class N3_AddressInformation {
+public class N3_AddressInformation extends BaseDao implements N_Info{
 	private String N301_address1;
 	private String N302_address2;
 	public String getN301_address1() {

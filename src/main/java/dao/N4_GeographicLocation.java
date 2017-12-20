@@ -1,6 +1,6 @@
 package dao;
 
-public class N4_GeographicLocation {
+public class N4_GeographicLocation extends BaseDao implements N_Info{
 	private String N401_cityName;
 	private String N402_stateOrProvinceCode;
 	private String N403_postalCode;

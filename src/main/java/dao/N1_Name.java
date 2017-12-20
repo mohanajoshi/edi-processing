@@ -1,6 +1,6 @@
 package dao;
 
-public class N1_Name {
+public class N1_Name extends BaseDao implements N_Info{
 	private String N101_entityIdentificationCode;
 	private String N102_name;
 	private String N103_identificationCodeQualifier;
