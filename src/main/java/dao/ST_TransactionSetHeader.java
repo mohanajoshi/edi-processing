@@ -3,6 +3,8 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class ST_TransactionSetHeader extends BaseDao{
 
 	
@@ -54,6 +56,16 @@ public class ST_TransactionSetHeader extends BaseDao{
 	}
 
 
+	public List<L11_ReferenceNumber> getListL11_referenceNumber() {
+		return listL11_referenceNumber;
+	}
+
+
+	public List<N_Information> getListN_information() {
+		return listN_information;
+	}
+
+	@JsonIgnore
 	public N_Information getN_information_lastElement() {
 		if(listN_information.size() >= 1) {
 			return listN_information.get(listN_information.size()-1);

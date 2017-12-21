@@ -3,6 +3,8 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class ShipmentStatusMessage extends BaseDao{
 	private ISA_InterchangeControlHeader ISA_interchangControlHeader;
 	private GS_FunctionalGroupHeader GS_functionalGroupHeader;
@@ -24,6 +26,8 @@ public class ShipmentStatusMessage extends BaseDao{
 	public ST_TransactionSetHeader getST_transactionSetHeader(int index) {
 		return listST_transactionSetHeader.get(index);
 	}
+	
+	@JsonIgnore
 	public ST_TransactionSetHeader getST_transactionSetHeader_LastElement() {
 		if(listST_transactionSetHeader.size() >= 1) {
 			return listST_transactionSetHeader.get(listST_transactionSetHeader.size()-1);

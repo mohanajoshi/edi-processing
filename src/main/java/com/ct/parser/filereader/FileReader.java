@@ -29,8 +29,8 @@ public class FileReader {
 		
 		Properties appProps = loadAppicationProperties();
 		
-		readFile(rules, appProps.getProperty("fileLocation") + "/214OutputA.TXT");
-		readFile(rules, appProps.getProperty("fileLocation") + "/214OutputB.TXT");
+		readFile(rules, appProps.getProperty("fileLocation") + "/test_input_file.txt");
+//		readFile(rules, appProps.getProperty("fileLocation") + "/214OutputB.TXT");
 		
 	}
 

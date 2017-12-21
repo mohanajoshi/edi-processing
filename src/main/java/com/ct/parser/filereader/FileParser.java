@@ -40,7 +40,8 @@ public class FileParser {
 		}
 		else if("G62".equals(mainToken)) {
 			parser = new Parser(new G62ParsingStrategy());
-		} else if(Arrays.asList(nArray).contains(mainToken)) {
+		} 
+		else if(Arrays.asList(nArray).contains(mainToken)) {
 			parser = new Parser(new NParsingStrategy());
 		}
 		
