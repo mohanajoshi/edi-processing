@@ -58,7 +58,7 @@ public class StrategyTestCases {
 	public void testISA_ParsingStrategy() throws Exception {
 		String ISA_line = fileLines.get(0);
 		ShipmentStatusMessage msg = new ShipmentStatusMessage();
-		FileParser.parseDocument(rules, ISA_line, msg);
+		FileParser.parseLine(rules, ISA_line, msg);
 		
 		Object obj = msg.getISA_interchangControlHeader();
 		System.out.println(obj);
@@ -69,7 +69,7 @@ public class StrategyTestCases {
 	public void testGS_ParsingStrategy() throws Exception {
 		String GS_line = fileLines.get(1);
 		ShipmentStatusMessage msg = new ShipmentStatusMessage();
-		FileParser.parseDocument(rules, GS_line, msg);
+		FileParser.parseLine(rules, GS_line, msg);
 		
 		Object obj = msg.getGS_functionalGroupHeader_LastElement();
 		System.out.println(obj);
@@ -80,7 +80,7 @@ public class StrategyTestCases {
 	public void testST_ParsingStrategy() throws Exception {
 		String ST_line = fileLines.get(2);
 		ShipmentStatusMessage msg = new ShipmentStatusMessage();
-		FileParser.parseDocument(rules, ST_line, msg);
+		FileParser.parseLine(rules, ST_line, msg);
 		
 		List<ST_TransactionSetHeader> list = msg.getGS_functionalGroupHeader_LastElement().getListST_transactionSetHeader();
 		for(ST_TransactionSetHeader st : list) {

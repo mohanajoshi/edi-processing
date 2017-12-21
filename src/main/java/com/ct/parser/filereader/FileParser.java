@@ -18,7 +18,7 @@ import dao.ShipmentStatusMessage;
 
 public class FileParser {
 	
-	public static void parseDocument(Properties rules, String line, ShipmentStatusMessage msg) throws Exception{
+	public static void parseLine(Properties rules, String line, ShipmentStatusMessage msg) throws Exception{
 
 		
 		String[] tokens = getTokens(line);

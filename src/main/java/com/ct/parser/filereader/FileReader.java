@@ -34,34 +34,6 @@ public class FileReader {
 		
 	}
 
-//	private void readFile(String inputPath, String outputPath) throws IOException{
-//		BufferedReader reader = null;
-//		BufferedWriter writer = null;
-//
-//		try {
-//			reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputPath), UTF_8_ENCODING));
-//
-//			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputPath), UTF_8_ENCODING));
-//
-//			for (String line; (line = reader.readLine()) != null;) {
-//
-//				writer.write(line);
-//				writer.newLine();
-//
-//
-//			}
-//		}
-//		finally {
-//			if (reader != null) {
-//				reader.close();
-//			}
-//			if (writer != null) {
-//				writer.close();
-//			}
-//		}
-//
-//	}
-	
 	public static Properties loadRules() {
 		return loadProperties("/rules.properties");
 	}
@@ -95,8 +67,11 @@ public class FileReader {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputPath), UTF_8_ENCODING));
 			for (String line; (line = reader.readLine()) != null;) {
 
-				FileParser.parseDocument(rules, line, msg);
-				
+				try {
+					FileParser.parseLine(rules, line, msg);
+				} catch(Exception e) {
+					System.out.println("Some error caused while parsing the following line, please check this line:\n" + line);
+				}
 
 			}
 			System.out.println("Message object: " + msg);
@@ -111,34 +86,5 @@ public class FileReader {
 		}
 
 	}
-	
-	/*private void loadDocument(String path) throws IOException {
-		FileInputStream inputStream = null;
-		Scanner sc = null;
-		int i =0;
-		try {
-			inputStream = new FileInputStream(path);
-			sc = new Scanner(inputStream, "UTF-8");
-
-			while (sc.hasNextLine()) {
-				String line = sc.nextLine();
-				System.out.println(line);
-				i++;
-			}
-			System.out.println("count = "+ i);
-
-			// note that Scanner suppresses exceptions
-			if (sc.ioException() != null) {
-				throw sc.ioException();
-			}
-		} finally {
-			if (inputStream != null) {
-				inputStream.close();
-			}
-			if (sc != null) {
-				sc.close();
-			}
-		}
-	}*/
 }
 
