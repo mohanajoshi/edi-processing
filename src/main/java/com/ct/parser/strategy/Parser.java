@@ -6,6 +6,8 @@ import java.util.Properties;
 
 import dao.ShipmentStatusMessage;
 
+
+//Strategy pattern is used here
 public class Parser {
 	private ParsingStrategy parsingStrategy;
 	

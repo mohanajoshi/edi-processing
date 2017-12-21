@@ -12,6 +12,7 @@ import com.ct.parser.strategy.L11ParsingStrategy;
 import com.ct.parser.strategy.NParsingStrategy;
 import com.ct.parser.strategy.Parser;
 import com.ct.parser.strategy.STParsingStrategy;
+import com.ct.parser.strategy.StrategyFactory;
 
 import dao.ShipmentStatusMessage;
 
@@ -19,32 +20,12 @@ public class FileParser {
 	
 	public static void parseDocument(Properties rules, String line, ShipmentStatusMessage msg) throws Exception{
 
-		String[] nArray = {"N1", "N2", "N3", "N4"};
+		
 		String[] tokens = getTokens(line);
 		String mainToken = tokens[0];
-		Parser parser = null;
-		if("ISA".equals(mainToken)) {
-			parser = new Parser(new ISAParsingStrategy());
-		}
-		else if("GS".equals(mainToken)) {
-			parser = new Parser(new GSParsingStrategy());
-		}
-		else if("ST".equals(mainToken)) {
-			parser = new Parser(new STParsingStrategy());
-		}
-		else if("B10".equals(mainToken)) {
-			parser = new Parser(new B10ParsingStrategy());
-		} 
-		else if("L11".equals(mainToken)) {
-			parser = new Parser(new L11ParsingStrategy());
-		}
-		else if("G62".equals(mainToken)) {
-			parser = new Parser(new G62ParsingStrategy());
-		} 
-		else if(Arrays.asList(nArray).contains(mainToken)) {
-			parser = new Parser(new NParsingStrategy());
-		}
 		
+		//factory pattern is used in below line
+		Parser parser = new Parser(StrategyFactory.createObject(mainToken));
 		if(parser!=null) {
 			parser.parse(rules, tokens, msg);
 		}
