@@ -19,7 +19,7 @@ public class GSParsingStrategy implements ParsingStrategy {
 		for(int i=0;i<tokens.length;i++) {
 			if(i==0) {
 				fieldName = rules.getProperty(mainToken);
-				methodName = "set" + fieldName;
+				methodName = "add" + fieldName;
 				thisPojo = new GS_FunctionalGroupHeader();
 				Parser.involkeMethod(cls, msg, methodName, GS_FunctionalGroupHeader.class, thisPojo);
 			} else {

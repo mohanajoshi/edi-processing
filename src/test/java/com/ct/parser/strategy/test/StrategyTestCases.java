@@ -71,7 +71,7 @@ public class StrategyTestCases {
 		ShipmentStatusMessage msg = new ShipmentStatusMessage();
 		FileParser.parseDocument(rules, GS_line, msg);
 		
-		Object obj = msg.getGS_functionalGroupHeader();
+		Object obj = msg.getGS_functionalGroupHeader_LastElement();
 		System.out.println(obj);
 		assertNotNull(obj);
 	}
@@ -82,7 +82,7 @@ public class StrategyTestCases {
 		ShipmentStatusMessage msg = new ShipmentStatusMessage();
 		FileParser.parseDocument(rules, ST_line, msg);
 		
-		List<ST_TransactionSetHeader> list = msg.getListST_transactionSetHeader();
+		List<ST_TransactionSetHeader> list = msg.getGS_functionalGroupHeader_LastElement().getListST_transactionSetHeader();
 		for(ST_TransactionSetHeader st : list) {
 			System.out.println("\n" + st);
 		}

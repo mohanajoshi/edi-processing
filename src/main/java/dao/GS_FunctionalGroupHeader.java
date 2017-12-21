@@ -1,5 +1,10 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class GS_FunctionalGroupHeader extends BaseDao{
 	
 	
@@ -18,6 +23,8 @@ public class GS_FunctionalGroupHeader extends BaseDao{
 	private String GS07_respAgencyCode;
 	
 	private String GS08_ediVersionNo;
+	
+	private List<ST_TransactionSetHeader> listST_transactionSetHeader = new ArrayList<ST_TransactionSetHeader>();
 	
 	
 	public String getGS01_functIdentifierCode() {
@@ -96,6 +103,26 @@ public class GS_FunctionalGroupHeader extends BaseDao{
 	public void setGS08_ediVersionNo(String gS08_ediVersionNo) {
 		GS08_ediVersionNo = gS08_ediVersionNo;
 	}
+	
+	public ST_TransactionSetHeader getST_transactionSetHeader(int index) {
+		return listST_transactionSetHeader.get(index);
+	}
+	
+	@JsonIgnore
+	public ST_TransactionSetHeader getST_transactionSetHeader_LastElement() {
+		if(listST_transactionSetHeader.size() >= 1) {
+			return listST_transactionSetHeader.get(listST_transactionSetHeader.size()-1);
+		}
+		return null;
+	}
+	public void addST_transactionSetHeader(
+			ST_TransactionSetHeader ST_transactionSetHeader) {
+		this.listST_transactionSetHeader.add(ST_transactionSetHeader);
+	}
+	public List<ST_TransactionSetHeader> getListST_transactionSetHeader() {
+		return listST_transactionSetHeader;
+	}
+	
 	
 //	@Override
 //	public String toString() {

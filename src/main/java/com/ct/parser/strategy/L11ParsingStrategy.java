@@ -22,7 +22,7 @@ public class L11ParsingStrategy implements ParsingStrategy {
 			if(i==0) {
 				fieldName = rules.getProperty(mainToken);
 				cls = ST_TransactionSetHeader.class;
-				ST_TransactionSetHeader stObj = msg.getST_transactionSetHeader_LastElement();
+				ST_TransactionSetHeader stObj = msg.getGS_functionalGroupHeader_LastElement().getST_transactionSetHeader_LastElement();
 				if(stObj!=null) {
 					methodName = "add" + fieldName;
 					thisPojo = new L11_ReferenceNumber();

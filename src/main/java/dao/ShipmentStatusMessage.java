@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ShipmentStatusMessage extends BaseDao{
 	private ISA_InterchangeControlHeader ISA_interchangControlHeader;
-	private GS_FunctionalGroupHeader GS_functionalGroupHeader;
-	private List<ST_TransactionSetHeader> listST_transactionSetHeader = new ArrayList<ST_TransactionSetHeader>();
+	private List<GS_FunctionalGroupHeader> listGS_functionalGroupHeader = new ArrayList<GS_FunctionalGroupHeader>();
+	
 	public ISA_InterchangeControlHeader getISA_interchangControlHeader() {
 		return ISA_interchangControlHeader;
 	}
@@ -16,30 +16,22 @@ public class ShipmentStatusMessage extends BaseDao{
 			ISA_InterchangeControlHeader iSA_interchangControlHeader) {
 		ISA_interchangControlHeader = iSA_interchangControlHeader;
 	}
-	public GS_FunctionalGroupHeader getGS_functionalGroupHeader() {
-		return GS_functionalGroupHeader;
+	public GS_FunctionalGroupHeader getGS_functionalGroupHeader(int index) {
+		return listGS_functionalGroupHeader.get(index);
 	}
-	public void setGS_functionalGroupHeader(
-			GS_FunctionalGroupHeader gS_functionalGroupHeader) {
-		GS_functionalGroupHeader = gS_functionalGroupHeader;
+	public void addGS_functionalGroupHeader(
+			GS_FunctionalGroupHeader gs_functionalGroupHeader) {
+		this.listGS_functionalGroupHeader.add(gs_functionalGroupHeader);
 	}
-	public ST_TransactionSetHeader getST_transactionSetHeader(int index) {
-		return listST_transactionSetHeader.get(index);
-	}
-	
 	@JsonIgnore
-	public ST_TransactionSetHeader getST_transactionSetHeader_LastElement() {
-		if(listST_transactionSetHeader.size() >= 1) {
-			return listST_transactionSetHeader.get(listST_transactionSetHeader.size()-1);
+	public GS_FunctionalGroupHeader getGS_functionalGroupHeader_LastElement() {
+		if(listGS_functionalGroupHeader.size() >= 1) {
+			return listGS_functionalGroupHeader.get(listGS_functionalGroupHeader.size()-1);
 		}
 		return null;
 	}
-	public void addST_transactionSetHeader(
-			ST_TransactionSetHeader ST_transactionSetHeader) {
-		this.listST_transactionSetHeader.add(ST_transactionSetHeader);
-	}
-	public List<ST_TransactionSetHeader> getListST_transactionSetHeader() {
-		return listST_transactionSetHeader;
+	public List<GS_FunctionalGroupHeader> getListGS_functionalGroupHeader() {
+		return listGS_functionalGroupHeader;
 	}
 	
 //	public String toString() {

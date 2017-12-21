@@ -28,7 +28,7 @@ public class NParsingStrategy implements ParsingStrategy {
 			if(i==0) {
 				fieldName = rules.getProperty(mainToken);
 				cls = ST_TransactionSetHeader.class;
-				ST_TransactionSetHeader stObj = msg.getST_transactionSetHeader_LastElement();
+				ST_TransactionSetHeader stObj = msg.getGS_functionalGroupHeader_LastElement().getST_transactionSetHeader_LastElement();
 				if(stObj!=null) {
 					if(mainToken.equals("N1")) {
 						N_Information nInfo =  new N_Information();

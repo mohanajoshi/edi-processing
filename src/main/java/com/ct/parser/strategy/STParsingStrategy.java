@@ -3,6 +3,7 @@ package com.ct.parser.strategy;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import dao.GS_FunctionalGroupHeader;
 import dao.ST_TransactionSetHeader;
 import dao.ShipmentStatusMessage;
 
@@ -11,7 +12,7 @@ public class STParsingStrategy implements ParsingStrategy {
 	String fieldName = null;
 	@Override
 	public ShipmentStatusMessage parse(Properties rules, String[] tokens, ShipmentStatusMessage msg) throws Exception {
-		Class cls = ShipmentStatusMessage.class;
+		Class cls = GS_FunctionalGroupHeader.class;
 		Method method = null;
 		String methodName = null;
 		String mainToken = tokens[0];
@@ -21,7 +22,7 @@ public class STParsingStrategy implements ParsingStrategy {
 				fieldName = rules.getProperty(mainToken);
 				methodName = "add" + fieldName;
 				thisPojo = new ST_TransactionSetHeader();
-				Parser.involkeMethod(cls, msg, methodName, ST_TransactionSetHeader.class, thisPojo);
+				Parser.involkeMethod(cls, msg.getGS_functionalGroupHeader_LastElement(), methodName, ST_TransactionSetHeader.class, thisPojo);
 			} else {
 				cls = ST_TransactionSetHeader.class;
 //				if(i<10) {
